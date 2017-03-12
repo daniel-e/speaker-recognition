@@ -1,0 +1,31 @@
+FROM ubuntu:16.10
+
+RUN apt-get update
+RUN apt-get -f install
+RUN apt-get -y --fix-missing dist-upgrade
+RUN apt-get autoclean
+RUN apt-get clean
+RUN apt-get autoremove
+
+RUN apt-get -y install apt-utils
+RUN apt-get -y install aptitude sudo build-essential
+
+RUN apt-get -y install python3 python3-pip octave sox libsox-fmt-mp3 alsa-utils
+RUN apt-get -y install libpcre++-dev zlib1g-dev
+
+RUN pip3 install --upgrade pip
+RUN pip3 install numpy scipy scikit-learn oct2py flask
+
+RUN addgroup --gid :GID: dev
+RUN useradd -m dev --gid :GID: --uid :UID:
+RUN addgroup dev audio
+RUN chmod a+rwx /opt
+
+RUN echo "alias l='ls -l'" >> /home/dev/.bashrc
+RUN echo "alias ..='cd ..'" >> /home/dev/.bashrc
+RUN echo "dev ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+EXPOSE 10001
+EXPOSE 5001
+
+CMD ["sudo", "su", "-", "dev"]

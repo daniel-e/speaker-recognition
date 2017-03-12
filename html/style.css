@@ -1,0 +1,41 @@
+.heading {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 83px;
+  text-align: center;
+  border-radius: 25px;
+  border: 1px solid #DA9484;
+  background: #b35900;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  color: #ffffff;
+  text-shadow: 1px 1px #888888;
+}
+.bodystyle {
+	background: #E0F3FA
+}
+/* display: table and display: table-cell required for vertical alignment */
+.box {
+  /* center middle horizontally */
+  position:absolute;
+  left: 50%;
+  margin-left: -105;
+
+  margin-top: 30px;
+  width: 210px;
+  height: 280px;
+
+  display: table;
+  overflow: hidden;
+}
+.boxi {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 24px;
+  text-align: center;
+  color: #a02020;
+  font-weight: bold;
+  background: #B9DEEB;
+  vertical-align: middle;
+  display: table-cell;
+  border-radius: 10px;
+  overflow: hidden;
+}
