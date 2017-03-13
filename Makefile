@@ -27,14 +27,15 @@ predict_example:
 
 # install nginx + html files
 
-HTMLDEP=$(wildcard html/*.html html/*.js html/*.css)
-NGINXDST=/opt/nginx-voice
+HTMLDEP   = $(wildcard html/*.html html/*.js html/*.css)
+NGINXDST  = /opt/nginx-voice
+NGINXTMP := $(shell mktemp -d)
 
 $(NGINXDST): extra/nginx.conf
 	rm -rf $(NGINXDST)
-	tar xzf extra/nginx-1.10.3.tar.gz
-	cd nginx-1.10.3/ && ./configure --prefix=$(NGINXDST) && make -j4 && make install
-	rm -rf nginx-1.10.3/
+	tar xzf extra/nginx-1.10.3.tar.gz -C $(NGINXTMP)
+	cd $(NGINXTMP)/nginx-1.10.3 && ./configure --prefix=$(NGINXDST) && make -j4 && make install
+	rm -rf $(NGINXTMP)
 	cp extra/nginx.conf $(NGINXDST)/conf/
 
 $(NGINXDST)/conf/nginx.conf: extra/nginx.conf
