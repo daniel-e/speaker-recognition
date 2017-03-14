@@ -4,6 +4,8 @@ C1 ?= audio_examples/example_female.mp3
 all: data/data.mat
 	@./cv.py data/data.mat
 
+# TODO if C0 is older than the model it is not re-created
+# TODO maybe replace this by a script
 data/class0.wav: $(C0)
 	@echo "Decoding $< ..."
 	@mkdir -p data
