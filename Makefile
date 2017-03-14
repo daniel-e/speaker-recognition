@@ -46,5 +46,13 @@ html: $(NGINXDST) $(NGINXDST)/conf/nginx.conf $(HTMLDEP)
 	@mkdir -p $(NGINXDST)/html-voice
 	cp html/* $(NGINXDST)/html-voice/
 
-html_clean:
+html-run: html
+	/opt/nginx-voice/sbin/nginx
+
+copy-images:
+	# todo: convert other formats to jpg
+	cp $(I0) $(NGINXDST)/html-voice/class0.jpg
+	cp $(I1) $(NGINXDST)/html-voice/class1.jpg
+
+html-clean:
 	rm -rf $(NGINXDST)
