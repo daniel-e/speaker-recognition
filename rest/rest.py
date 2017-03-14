@@ -26,7 +26,7 @@ args = parser.parse_args()
 # set log level for Flask
 logging.getLogger("werkzeug").setLevel(logging.ERROR)
 
-octave.addpath("../")
+octave.addpath("../octave")
 audio = Audio(rate = args.r, bits = args.b)
 app = Flask(__name__)
 target = Storage()
