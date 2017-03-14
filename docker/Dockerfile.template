@@ -24,6 +24,7 @@ RUN chmod a+rwx /opt
 RUN echo "alias l='ls -l'" >> /home/dev/.bashrc
 RUN echo "alias ..='cd ..'" >> /home/dev/.bashrc
 RUN echo "dev ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN echo "cd /host" >> /home/dev/.bashrc
 
 EXPOSE 10001
 EXPOSE 5001
